@@ -3,72 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currencys Website</title>
+    <title>Currency's Website</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
             color: #333;
+            line-height: 1.6;
         }
         header {
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
-            padding: 20px 0;
+            padding: 40px 0;
             text-align: center;
         }
+        header img {
+            max-width: 150px;
+            margin-top: 10px;
+        }
         nav {
-            background-color: #333;
-            overflow: hidden;
+            background-color: #4CAF50;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
         }
         nav a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
+            color: white;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
         nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        section {
-            padding: 20px;
+            background-color: #333;
+            color: #fff;
         }
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            padding: 20px 0;
         }
         .card {
             background-color: white;
             padding: 20px;
             margin: 20px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        .card img {
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Awesome Website</h1>
-        <!-- Example image in the header -->
+        <h1>Welcome to Currency's Website</h1>
         <img src="images/unknodfwn.png" alt="Header Image">
     </header>
     <nav>
@@ -78,40 +87,34 @@
         <a href="#contact">Contact</a>
     </nav>
     <section class="container">
-        <div class="card">
+        <div class="card" id="about">
             <h2>About Me</h2>
-            <!-- Example image in the About section -->
             <img src="images/Currency.png" alt="About Me Image">
-            <p>Hey, welcome to my website! My name is currency and i was born November 1st 1987. I'm an african american but i currently reside in Norway. My dream is to become a professional rapper and beat maker. FL studio is my passion and i wish someday i become a successful beat maker like Mozart or Lebron James. </p>
+            <p>Hey, welcome to my website! My name is Currency and I was born on November 1st, 1987. I'm African American but currently reside in Norway. My dream is to become a professional rapper and beat maker. FL Studio is my passion, and I wish to someday become a successful beat maker like Mozart or LeBron James.</p>
         </div>
-        <div class="card">
+        <div class="card" id="services">
             <h2>Services</h2>
-            <!-- Example image in the Services section -->
             <img src="images/cutecat.gif" alt="Services Image">
-            <p>I excel at video editing and photoshop and beat making/producing and mixing. I'm also a rapper. </p>
-        <div class="card">
-    </div>
-    <h2>Links</h2>
-    <!-- Example image in the Contact section -->
-    <img src="images/eae13a5bw1161.png" alt="Contact Image">
-    <p>My Discord is: hungerff</p>
-    <p>And my Discord server is: 
-        <a href="https://discord.gg/8sypCAA4v6" target="_blank">Currency's Discord server</a>
-    </p>
-    <p>And my YouTube channel is: 
-        <a href="https://www.youtube.com/@NVIDIA_GeForce_Game_Ready_Driv" target="_blank">Visit my YouTube channel</a>
-    </p>
-</div>
-        <div class="card">
-            <h2>Clash of clans league levels</h2>
-            <!-- Example image in the Services section -->
-            <img src="images/2941518_orig.png" alt="Services Image">
+            <p>I excel at video editing, Photoshop, beat making/producing, and mixing. I'm also a rapper.</p>
         </div>
-         <div class="card">
-            <h2>converted AGAL shaders from Flash engine to GLSL</h2>
-            <!-- Example image in the Services section -->
-            <img src="images/imsadage.png" alt="Services Image">
-            <p></p>
+        <div class="card" id="contact">
+            <h2>Links</h2>
+            <img src="images/eae13a5bw1161.png" alt="Contact Image">
+            <p>My Discord is: hungerff</p>
+            <p>And my Discord server is: 
+                <a href="https://discord.gg/8sypCAA4v6" target="_blank">Currency's Discord server</a>
+            </p>
+            <p>My YouTube channel is: 
+                <a href="https://www.youtube.com/@NVIDIA_GeForce_Game_Ready_Driv" target="_blank">Visit my YouTube channel</a>
+            </p>
+        </div>
+        <div class="card">
+            <h2>Clash of Clans League Levels</h2>
+            <img src="images/2941518_orig.png" alt="Clash of Clans Image">
+        </div>
+        <div class="card">
+            <h2>Converted AGAL Shaders from Flash Engine to GLSL</h2>
+            <img src="images/imsadage.png" alt="AGAL Shaders Image">
         </div>
     </section>
     <footer>
