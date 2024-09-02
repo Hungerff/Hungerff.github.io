@@ -9,36 +9,39 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #121212;
+            color: #e0e0e0;
             line-height: 1.6;
         }
         header {
-            background-color: #333;
-            color: white;
+            background-color: #1f1f1f;
+            color: #fff;
             padding: 40px 0;
             text-align: center;
+            border-bottom: 2px solid #333;
         }
         header img {
             max-width: 150px;
             margin-top: 10px;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
         }
         nav {
-            background-color: #4CAF50;
+            background-color: #333;
             display: flex;
             justify-content: center;
             padding: 10px 0;
         }
         nav a {
-            color: white;
+            color: #e0e0e0;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
         nav a:hover {
-            background-color: #333;
+            background-color: #4CAF50;
             color: #fff;
         }
         .container {
@@ -49,29 +52,39 @@
             padding: 20px 0;
         }
         .card {
-            background-color: white;
+            background-color: #1f1f1f;
             padding: 20px;
             margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
         }
         .card img {
             border-radius: 10px;
             margin-bottom: 15px;
+            width: 100%;
+            height: auto;
         }
         .card h2 {
             margin-top: 0;
             color: #4CAF50;
         }
         footer {
-            background-color: #333;
-            color: white;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
             text-align: center;
             padding: 10px 0;
             margin-top: 20px;
+            border-top: 2px solid #333;
         }
         footer p {
             margin: 0;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
