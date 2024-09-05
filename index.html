@@ -12,49 +12,36 @@
             background-color: #121212;
             color: #e0e0e0;
             line-height: 1.6;
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeIn 1s;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         header {
             background-color: #1f1f1f;
             color: #fff;
             padding: 40px 0;
             text-align: center;
             border-bottom: 2px solid #333;
-            animation: slideInFromTop 1s ease-out;
+            animation: slideIn 0.8s;
         }
-
-        @keyframes slideInFromTop {
-            0% { transform: translateY(-100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-
         header img {
             max-width: 150px;
             margin-top: 10px;
             border-radius: 50%;
             border: 2px solid #4CAF50;
-            animation: bounce 2s infinite;
         }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-30px); }
-            60% { transform: translateY(-15px); }
-        }
-
         nav {
             background-color: #333;
             display: flex;
             justify-content: center;
             padding: 10px 0;
         }
-
         nav a {
             color: #e0e0e0;
             text-align: center;
@@ -62,69 +49,43 @@
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s, color 0.3s;
-            position: relative;
-            overflow: hidden;
+            opacity: 0; /* Start with hidden links */
+            animation: fadeIn 1s forwards; /* Fade in animation */
         }
-
+        nav a:nth-child(1) { animation-delay: 0.2s; }
+        nav a:nth-child(2) { animation-delay: 0.4s; }
+        nav a:nth-child(3) { animation-delay: 0.6s; }
+        nav a:nth-child(4) { animation-delay: 0.8s; }
         nav a:hover {
             background-color: #4CAF50;
             color: #fff;
         }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            background-color: #4CAF50;
-            bottom: 0;
-            left: -100%;
-            transition: left 0.3s ease-in-out;
-        }
-
-        nav a:hover::before {
-            left: 0;
-        }
-
         .container {
             width: 90%;
             max-width: 1200px;
             margin: auto;
             overflow: hidden;
             padding: 20px 0;
-            animation: fadeIn 1.5s ease-in-out;
         }
-
         .card {
             background-color: #1f1f1f;
             padding: 20px;
             margin: 20px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s; /* Add transition for hover effect */
         }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
+        
         .card img {
             border-radius: 10px;
             margin-bottom: 15px;
             width: 100%;
             height: auto;
-            transition: opacity 0.3s ease;
         }
-
-        .card img:hover {
-            opacity: 0.8;
-        }
-
         .card h2 {
             margin-top: 0;
             color: #4CAF50;
         }
-
         footer {
             background-color: #1f1f1f;
             color: #e0e0e0;
@@ -133,69 +94,65 @@
             margin-top: 20px;
             border-top: 2px solid #333;
         }
-
         footer p {
             margin: 0;
         }
-
         a {
             color: #4CAF50;
             text-decoration: none;
         }
-
         a:hover {
             text-decoration: underline;
         }
-
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Currency's Website</h1>
-        <img src="images/unknodfwn.png" alt="Header Image">
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Skills</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section class="container">
-        <div class="card" id="about">
-            <h2>About Me</h2>
-            <img src="images/Currency.png" alt="About Me Image">
-            <p>Hey, welcome to my website! My name is Currency and I was born on November 1st, 1967. I'm African American but currently reside in Norway. My dream is to become a professional rapper and beat maker. FL Studio is my passion, and I wish to someday become a successful beat maker like Mozart or LeBron James.</p>
-        </div>
-        <div class="card" id="services">
-            <h2>Skills</h2>
-            <img src="images/cutecat.gif" alt="Services Image">
-            <p>I excel at video editing, Photoshop, beat making/producing, and mixing. I'm also a rapper.</p>
-        </div>
-        <div class="card" id="contact">
-            <h2>Links</h2>
-            <img src="images/eae13a5bw1161.png" alt="Contact Image">
-            <p>My Discord is: hungerff</p>
-            <p>And my Discord server is: 
-                <a href="https://discord.gg/8sypCAA4v6" target="_blank">Currency's Discord server</a>
-            </p>
-            <p>My other Discord server is: 
-                <a href="https://discord.gg/AuhTk4n66b" target="_blank">Currency's cat images server</a>
-            </p>
-            <p>My YouTube channel is: 
-                <a href="https://www.youtube.com/@NVIDIA_GeForce_Game_Ready_Driv" target="_blank">Visit my YouTube channel</a>
-            </p>
-        </div>
-        <div class="card">
-            <h2>Clash of Clans League Levels</h2>
-            <img src="images/2941518_orig.png" alt="Clash of Clans Image">
-        </div>
-        <div class="card">
-            <h2>Converted AGAL Shaders from Flash Engine to GLSL</h2>
-            <img src="images/imsadage.png" alt="AGAL Shaders Image">
-        </div>
-    </section>
-    <footer>
-        <p>&copy; 2024 Currency Industries</p>
-    </footer>
+<header>
+    <h1>Welcome to Currency's Website</h1>
+    <img src="images/unknodfwn.png" alt="Header Image">
+</header>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Skills</a>
+    <a href="#contact">Contact</a>
+</nav>
+<section class="container">
+    <div class="card" id="about">
+        <h2>About Me</h2>
+        <img src="images/Currency.png" alt="About Me Image">
+        <p>Hey, welcome to my website! My name is Currency and I was born on November 1st, 1967. I'm African American but currently reside in Norway. My dream is to become a professional rapper and beat maker. FL Studio is my passion, and I wish to someday become a successful beat maker like Mozart or LeBron James.</p>
+    </div>
+    <div class="card" id="services">
+        <h2>Skills</h2>
+        <img src="images/cutecat.gif" alt="Services Image">
+        <p>I excel at video editing, Photoshop, beat making/producing, and mixing. I'm also a rapper.</p>
+    </div>
+    <div class="card" id="contact">
+        <h2>Links</h2>
+        <img src="images/eae13a5bw1161.png" alt="Contact Image">
+        <p>My Discord is: hungerff</p>
+        <p>And my Discord server is:
+            <a href="https://discord.gg/8sypCAA4v6" target="_blank">Currency's Discord server</a>
+        </p>
+        <p>My other Discord server is:
+            <a href="https://discord.gg/AuhTk4n66b" target="_blank">Currency's cat images server</a>
+        </p>
+        <p>My YouTube channel is:
+            <a href="https://www.youtube.com/@NVIDIA_GeForce_Game_Ready_Driv" target="_blank">Visit my YouTube channel</a>
+        </p>
+    </div>
+    <div class="card">
+        <h2>Clash of Clans League Levels</h2>
+        <img src="images/2941518_orig.png" alt="Clash of Clans Image">
+    </div>
+    <div class="card">
+        <h2>Converted AGAL Shaders from Flash Engine to GLSL</h2>
+        <img src="images/imsadage.png" alt="AGAL Shaders Image">
+    </div>
+</section>
+<footer>
+    <p>&copy; 2024 Currency Industries</p>
+</footer>
 </body>
 </html>
