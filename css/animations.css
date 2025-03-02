@@ -1,0 +1,111 @@
+/* Animation styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply animations to elements */
+.hero, .card, .about-section, .discord-section, .gallery-section, .timeline-section {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.hero-text h2, .hero-text p, .hero-text .btn {
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+}
+
+.hero-text p {
+  animation-delay: 0.2s;
+}
+
+.hero-text .btn {
+  animation-delay: 0.4s;
+}
+
+.profile-pic {
+  animation: pulse 2s infinite;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-icon {
+  animation: pulse 2s infinite;
+}
+
+.gallery-item img {
+  transition: transform 0.3s ease;
+}
+
+.gallery-overlay {
+  transition: transform 0.3s ease;
+}
+
+.server-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scroll reveal animations */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated hover effects */
+.nav a:hover {
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover, .card-link:hover, .social-icon:hover, .discord-join-btn:hover {
+  transition: all 0.3s ease;
+}
+
+/* Animation for page transitions */
+@keyframes pageTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  animation: pageTransition 0.5s ease;
+}
