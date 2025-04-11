@@ -1,4 +1,3 @@
-/* Animation styles */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -31,7 +30,6 @@
   }
 }
 
-/* Apply animations to elements */
 .hero, .card, .about-section, .discord-section, .gallery-section, .timeline-section {
   animation: fadeIn 0.8s ease forwards;
 }
@@ -73,7 +71,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Scroll reveal animations */
 .timeline-item {
   opacity: 0;
   transform: translateY(20px);
@@ -85,7 +82,6 @@
   transform: translateY(0);
 }
 
-/* Animated hover effects */
 .nav a:hover {
   transition: background-color 0.3s ease;
 }
@@ -94,7 +90,6 @@
   transition: all 0.3s ease;
 }
 
-/* Animation for page transitions */
 @keyframes pageTransition {
   0% {
     opacity: 0;

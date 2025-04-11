@@ -1,101 +1,156 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize the timeline
-  initTimeline();
+  initTimelineAnimations();
 });
 
-function initTimeline() {
+function initTimelineAnimations() {
   const timelineItems = document.querySelectorAll('.timeline-item');
-
-  // Set initial state for timeline items (for animation)
-  timelineItems.forEach((item, index) => {
-    // Stagger the animation delay
-    item.style.transitionDelay = (index * 0.2) + 's';
+  
+  if (!timelineItems.length) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        
+        const icon = entry.target.querySelector('.timeline-icon');
+        const content = entry.target.querySelector('.timeline-content');
+        
+        if (icon) {
+          icon.style.transform = 'scale(1)';
+          icon.style.opacity = '1';
+        }
+        
+        if (content) {
+          content.style.transform = 'translateX(0)';
+          content.style.opacity = '1';
+        }
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2
   });
+  
+  timelineItems.forEach((item, index) => {
+    const isEven = index % 2 === 0;
+    const icon = item.querySelector('.timeline-icon');
+    const content = item.querySelector('.timeline-content');
+    
+    item.style.opacity = '1';
+    
+    if (icon) {
+      icon.style.transform = 'scale(0.5)';
+      icon.style.opacity = '0';
+      icon.style.transition = 'all 0.5s ease ' + (index * 0.1) + 's';
+    }
+    
+    if (content) {
+      content.style.transform = isEven ? 'translateX(-50px)' : 'translateX(50px)';
+      content.style.opacity = '0';
+      content.style.transition = 'all 0.5s ease ' + (index * 0.1 + 0.2) + 's';
+    }
+    
+    observer.observe(item);
+  });
+  
+  addTimelineInteractivity();
+}
 
-  // Animate timeline items when they come into view
-  function animateTimelineOnScroll() {
+function addTimelineInteractivity() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  timelineItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      const content = this.querySelector('.timeline-content');
+      const icon = this.querySelector('.timeline-icon');
+      
+      if (content) {
+        content.style.transform = 'translateY(-5px)';
+        content.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+      }
+      
+      if (icon) {
+        icon.style.transform = 'scale(1.1)';
+      }
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      const content = this.querySelector('.timeline-content');
+      const icon = this.querySelector('.timeline-icon');
+      
+      if (content) {
+        content.style.transform = 'translateY(0)';
+        content.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+      }
+      
+      if (icon) {
+        icon.style.transform = 'scale(1)';
+      }
+    });
+    
+    const icon = item.querySelector('.timeline-icon');
+    
+    if (icon) {
+      icon.addEventListener('click', function() {
+        const content = this.parentElement.querySelector('.timeline-content');
+        
+        if (content) {
+          content.classList.toggle('highlight');
+          
+          if (content.classList.contains('highlight')) {
+            content.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            content.style.borderColor = 'var(--primary-color)';
+          } else {
+            content.style.backgroundColor = '';
+            content.style.borderColor = '';
+          }
+        }
+      });
+    }
+  });
+}
+
+function applyRetroTimelineStyles() {
+  if (document.body.classList.contains('retro')) {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timeline = document.querySelector('.timeline');
+    
+    if (timeline) {
+      timeline.style.backgroundImage = 'none';
+    }
+    
     timelineItems.forEach(item => {
-      const itemTop = item.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-
-      if (itemTop < windowHeight - 100) {
-        item.classList.add('visible');
+      const content = item.querySelector('.timeline-content');
+      const icon = item.querySelector('.timeline-icon');
+      
+      if (content) {
+        content.style.backgroundColor = '#000080';
+        content.style.border = '2px solid #ffff00';
+        content.style.boxShadow = '5px 5px 0 #000000';
+        content.style.borderRadius = '0';
+      }
+      
+      if (icon) {
+        icon.style.backgroundColor = '#ff0000';
+        icon.style.border = '3px solid #ffff00';
+        icon.style.boxShadow = 'none';
+        icon.style.borderRadius = '0';
       }
     });
   }
+}
 
-  // Check timeline items on scroll
-  window.addEventListener('scroll', animateTimelineOnScroll);
-
-  // Check on initial load
-  animateTimelineOnScroll();
-
-  // Hover effect for timeline items
-  timelineItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      // Scale up slightly
-      this.querySelector('.timeline-content').style.transform = 'scale(1.02)';
-      this.querySelector('.timeline-content').style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
+document.addEventListener('DOMContentLoaded', function() {
+  const retroToggleButton = document.querySelector('.retro-toggle');
+  
+  if (retroToggleButton) {
+    retroToggleButton.addEventListener('click', function() {
+      setTimeout(applyRetroTimelineStyles, 100);
     });
-
-    item.addEventListener('mouseleave', function() {
-      // Reset scaling
-      this.querySelector('.timeline-content').style.transform = 'scale(1)';
-      this.querySelector('.timeline-content').style.boxShadow = '';
-    });
-  });
-
-  // Get all timeline dates for interactive navigation
-  const timelineDates = Array.from(document.querySelectorAll('.timeline-date'))
-    .map(dateEl => dateEl.textContent);
-
-  // Create a timeline navigation if there are many events
-  if (timelineItems.length > 6) {
-    createTimelineNavigation(timelineDates);
   }
-}
-
-function createTimelineNavigation(dates) {
-  // Create a navigation container
-  const navContainer = document.createElement('div');
-  navContainer.className = 'timeline-navigation';
-  navContainer.style.display = 'flex';
-  navContainer.style.justifyContent = 'center';
-  navContainer.style.gap = '10px';
-  navContainer.style.margin = '0 0 30px 0';
-
-  // Add date buttons
-  dates.forEach((date, index) => {
-    const dateBtn = document.createElement('button');
-    dateBtn.textContent = date.split(' - ')[0]; // Just use the year
-    dateBtn.className = 'filter-btn'; // Reuse filter button style
-
-    // Style for the first one (active)
-    if (index === 0) {
-      dateBtn.classList.add('active');
-    }
-
-    // Scroll to the corresponding timeline item when clicked
-    dateBtn.addEventListener('click', () => {
-      // Update active state
-      document.querySelectorAll('.timeline-navigation button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      dateBtn.classList.add('active');
-
-      // Scroll to the timeline item
-      const timelineItems = document.querySelectorAll('.timeline-item');
-      timelineItems[index].scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    });
-
-    navContainer.appendChild(dateBtn);
-  });
-
-  // Add the navigation to the page
-  const timelineSection = document.querySelector('.timeline-section');
-  const timeline = document.querySelector('.timeline');
-  timelineSection.insertBefore(navContainer, timeline);
-}
+  
+  if (document.body.classList.contains('retro')) {
+    applyRetroTimelineStyles();
+  }
+});
